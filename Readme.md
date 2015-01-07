@@ -5,22 +5,22 @@
 
 ## Installation
 
-  **Server:**
+**Server:**
 
     npm install ive
 
-  **Browser (duo):**
+**Browser (duo):**
 
     var Ive = require('ive');
 
-  **Browser (standalone):**
+**Browser (standalone):**
 
   - [ive.js](dist/ive.js)
   - [ive.min.js](dist/ive.min.js)
 
-  **Browser (browserify):**
+**Browser (browserify):**
 
-  * accepting PRs
+  - accepting PRs
 
 ## Features
 

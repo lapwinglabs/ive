@@ -7,11 +7,15 @@
 
 **Server:**
 
-    npm install ive
+```bash
+npm install ive
+```
 
 **Browser (duo):**
 
-    var Ive = require('ive');
+```js
+var Ive = require('ive');
+```
 
 **Browser (standalone):**
 

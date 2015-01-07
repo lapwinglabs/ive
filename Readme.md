@@ -15,12 +15,12 @@
 
   Browser (standalone):
 
-    - [ive.js](dist/ive.js)
-    - [ive.min.js](dist/ive.min.js)
+  - [ive.js](dist/ive.js)
+  - [ive.min.js](dist/ive.min.js)
 
   Browser (browserify):
 
-    * accepting PRs
+  * accepting PRs
 
 ## Features
 
@@ -84,7 +84,7 @@ schema(document.querySelector('.create-user'));
 
 #### Server
 
-##### Express
+##### - Express
 
 **server.js**
 
@@ -102,7 +102,9 @@ app.post('/users', function(req, res, next) {
 });
 ```
 
-##### Koa
+##### - Koa
+
+**server.js**
 
 ```js
 var schema = require('./user-schema');
@@ -120,11 +122,11 @@ app.use(_.post('/users', function *(next) {
 
 ## API
 
-### Ive([attrs])
+### `Ive([attrs])`
 
 Initialize an `Ive` instance with an optional set of `attrs`.
 
-### ive(obj|str, [fn])
+### `ive(obj|str, [fn])`
 
 Validate `obj` against the schema, calling `fn` when the validation is complete. `fn` has the signature
 `function(error, val) { ... }`. `val` is the new object that may be cleansed, formatted, and cast.
@@ -184,7 +186,7 @@ some({
 })(fn)
 ```
 
-### ive.attr(name|ive|obj, [rube])
+### `ive.attr(name|ive|obj, [rube])`
 
 Add an attribute, ive instance, or object to `ive`. Optionally you may pass a `rube` instance as the key.
 

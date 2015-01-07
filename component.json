@@ -1,0 +1,19 @@
+{
+  "name": "rube-schema",
+  "version": "0.1.3",
+  "description": "composable object schemas powered by Rube",
+  "keywords": [
+    "schema",
+    "object",
+    "rube"
+  ],
+  "dependencies": {
+    "tj/batch": "^0.5.1",
+    "lapwinglabs/rube": "0.0.x",
+    "matthewmueller/extend.js": "0.0.x",
+    "component/assert": "0.x",
+    "dominicbarnes/form": "0.2.x",
+    "component/event": "0.1.x",
+    "ianstormtaylor/trigger-event": "0.x"
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rube Schema</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      form {
+        width: 500px;
+        margin: 50px auto;
+      }
+
+      input[type='text'], textarea {
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 10px;
+        margin: 20px 0;
+      }
+
+      input[invalid], textarea[invalid] {
+        border-color: red;
+      }
+
+
+    </style>
+  </head>
+  <body>
+
+    <form action="/create" method='post' class="form">
+      <input type="text" name="name" placeholder="name">
+      <br>
+      <input type="text" name="phone" placeholder="phone">
+      <br>
+      <input type="text" name="email" placeholder="email">
+      <br>
+      <input type="text" name="age" placeholder="age">
+      <br>
+      <textarea name="bio" cols="30" rows="10" placeholder="bio"></textarea>
+      <br>
+      <input type="checkbox" name="sex" value='M'>Male
+      <input type="checkbox" name="sex" value='F'>Female
+      <br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+  <script src="/build/index.js"></script>
+  <script>
+    var form = document.querySelector('.form');
+    var schema = Schema();
+
+    schema.attr('name')
+      .type(String)
+      .between(2, 30)
+      .required(true);
+
+    schema.attr('phone')
+      .assert(/^\d{10}$/)
+      .format(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
+      .required(true);
+
+    schema.attr('email')
+      .type(String)
+      .assert(/\w+\@\w+\.\w+/)
+      .required(true);
+
+    schema.attr('age')
+      .cast(Number)
+      .between(18, 110)
+      .required(true);
+
+    schema.attr('bio')
+      .between(10, Infinity)
+      .required(true);
+
+    schema.attr('sex')
+      .assert(/^[MF]$/)
+      .required(true);
+
+    schema(document.querySelector('.form'));
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // verifying that this works client-side
+      schema({
+        name: form.querySelector('[name="name"]').value,
+        phone: form.querySelector('[name="phone"]').value,
+        email: form.querySelector('[name="email"]').value,
+        age: form.querySelector('[name="age"]').value,
+        bio: form.querySelector('[name="bio"]').value,
+        sex: form.querySelector('[name="sex"]').value
+      }, function(err, v) {
+        if (err) throw err;
+        console.log(v);
+      });
+    });
+  </script>
+  </body>
+</html>

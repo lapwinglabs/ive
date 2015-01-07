@@ -12,7 +12,7 @@
   1. Browser (duo):
 
   ```js
-    var schema = require('ive');
+    var Ive = require('ive');
     ```
 
   2. Browser (standalone):

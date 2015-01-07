@@ -9,18 +9,20 @@
 
     npm install ive
 
-  Browser (duo):
+  1. Browser (duo):
 
+  ```js
     var schema = require('ive');
+    ```
 
-  Browser (standalone):
+  2. Browser (standalone):
 
-  - [ive.js](dist/ive.js)
-  - [ive.min.js](dist/ive.min.js)
+    - [ive.js](dist/ive.js)
+    - [ive.min.js](dist/ive.min.js)
 
-  Browser (browserify):
+  3. Browser (browserify):
 
-  * accepting PRs
+    * accepting PRs
 
 ## Features
 
@@ -61,7 +63,7 @@ ive.attr('age')
   .required(true);
 ```
 
-#### Browser
+### Browser
 
 **index.html**
 
@@ -82,9 +84,9 @@ schema(document.querySelector('.create-user'));
 // that's it. everything else is handled through form and input attributes
 ```
 
-#### Server
+### Server
 
-##### - Express
+#### - Express
 
 **server.js**
 
@@ -102,7 +104,7 @@ app.post('/users', function(req, res, next) {
 });
 ```
 
-##### - Koa
+#### - Koa
 
 **server.js**
 

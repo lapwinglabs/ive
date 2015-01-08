@@ -81,6 +81,18 @@
 
     schema(document.querySelector('.form'));
 
+    schema.on('submitting', function(form, json) {
+      console.log('submitting', form, json);
+    });
+
+    schema.on('submit', function(form, err, json) {
+      console.log('submit', form, err, json);
+    });
+
+    schema.on('blur', function(form, err, v) {
+      console.log('blur', form, err, v);
+    })
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 

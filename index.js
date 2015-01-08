@@ -5,9 +5,14 @@
 var validate = require('./lib/validate');
 var extend = require('extend.js');
 var form = require('./lib/form');
-var Batch = require('batch');
 var isArray = Array.isArray;
 var Rube = require('rube');
+
+try {
+  var Emitter = require('events').EventEmitter;
+} catch (e) {
+  var Emitter = require('emitter');
+}
 
 /**
  * Export `Ive`
@@ -63,6 +68,9 @@ function Ive(props) {
 
   // add the attributes
   ive.attr(props);
+
+  // attach an event emitter
+  Emitter(ive);
 
   return ive;
 }

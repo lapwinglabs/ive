@@ -14,6 +14,7 @@
     "component/assert": "0.x",
     "dominicbarnes/form": "0.2.x",
     "component/event": "0.1.x",
-    "ianstormtaylor/trigger-event": "0.x"
+    "ianstormtaylor/trigger-event": "0.x",
+    "component/emitter": "1.1.x"
   }
 }

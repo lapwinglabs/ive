@@ -1,7 +1,7 @@
 {
-  "name": "rube-schema",
-  "version": "0.1.3",
-  "description": "composable object schemas powered by Rube",
+  "name": "ive",
+  "version": "0.0.2",
+  "description": "isomorphic validation",
   "keywords": [
     "schema",
     "object",

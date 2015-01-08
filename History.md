@@ -1,4 +1,15 @@
 
+n.n.n / 2015-01-07
+==================
+
+  * return => continue
+  * update readme
+  * update readme
+  * update readme
+  * update readme
+  * fix readme
+  * readme cleanup
+
 0.1.3 / 2014-12-01
 ==================
 

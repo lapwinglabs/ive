@@ -41,7 +41,7 @@
       <br>
       <input type="text" name="email" placeholder="email" validate>
       <br>
-      <input type="text" name="age" placeholder="age" validate>
+      <input type="text" name="user[age]" placeholder="age" validate>
       <br>
       <textarea name="bio" cols="30" rows="10" placeholder="bio" disabled validate></textarea>
       <br>
@@ -72,7 +72,7 @@
       .assert(/\w+\@\w+\.\w+/)
       .required(true);
 
-    schema.attr('age')
+    schema.attr('user[age]')
       .cast(Number)
       .between(18, 110)
       .required(true);
@@ -87,6 +87,7 @@
 
     schema(document.querySelector('.form'), function(err) {
       if (err) console.error(err.message);
+      alert('submitted!')
     });
 
 

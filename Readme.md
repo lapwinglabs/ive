@@ -244,7 +244,6 @@ admin.attr('password')
 
   * Better support for different form elements (radio, checkbox, etc.)
   * Customize the error formatting based on the environment
-  * Better support for nested attributes
   * Subclass the generic Error
 
 ## Test

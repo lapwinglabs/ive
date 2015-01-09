@@ -1,6 +1,6 @@
 {
   "name": "ive",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "isomorphic validation",
   "keywords": [
     "schema",
@@ -14,6 +14,6 @@
     "dominicbarnes/form": "0.2.x",
     "component/event": "0.1.x",
     "component/value": "1.1.0",
-    "matthewmueller/squares": "0.2.0"
+    "matthewmueller/squares": "0.2.x"
   }
 }

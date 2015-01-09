@@ -176,4 +176,51 @@ describe('Schema', function() {
       done();
     });
   })
+
+  it('should support nested properties', function() {
+    var schema = Schema();
+    schema.attr('gateways.paypal').required(true).type(String).assert(/\w+\@\w+\.\w+/);
+
+    schema({
+      gateways: {
+        paypal: 'lapwing@lapwinglabs.com'
+      }
+    }, function(err, v) {
+      assert(!err);
+      assert('lapwing@lapwinglabs.com' == v.gateways.paypal);
+    });
+  })
+
+  it('should validate arrays', function() {
+    var schema = Schema();
+    schema.attr('accounts[].name').required(true).type(String).between(2, 10);
+    schema.attr('accounts[].password').required(true).type(Number).between(100, Infinity)
+
+    schema({
+      accounts: [
+        {
+          name: 'twitter',
+          password: 123
+        },
+        {
+          name: 'facebook',
+          password: 456
+        }
+      ]
+    }, function(err, v) {
+      assert(!err);
+      assert.deepEqual(v, {
+        accounts: [
+          {
+            name: 'twitter',
+            password: 123
+          },
+          {
+            name: 'facebook',
+            password: 456
+          }
+        ]
+      });
+    });
+  })
 })

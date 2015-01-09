@@ -18,7 +18,8 @@
   "dependencies": {
     "batch": "^0.5.1",
     "extend.js": "0.0.x",
-    "rube": "0.0.x"
+    "rube": "0.0.x",
+    "squares": "^0.2.0"
   },
   "devDependencies": {
     "duo-serve": "^0.6.1",

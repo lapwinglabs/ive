@@ -1,4 +1,10 @@
 
+0.1.1 / 2015-01-08
+==================
+
+  * remove todo
+  * support nested attributes with keys
+
 0.1.0 / 2015-01-08
 ==================
 

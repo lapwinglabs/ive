@@ -1,6 +1,6 @@
 {
   "name": "ive",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "isomorphic validation",
   "keywords": [
     "schema",
@@ -17,9 +17,8 @@
   },
   "dependencies": {
     "batch": "^0.5.1",
-    "extend.js": "0.0.2",
-    "rube": "0.x",
-    "component-emitter": "1.1.x"
+    "extend.js": "0.0.x",
+    "rube": "0.0.x"
   },
   "devDependencies": {
     "duo-serve": "^0.6.1",

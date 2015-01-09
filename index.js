@@ -5,14 +5,9 @@
 var validate = require('./lib/validate');
 var extend = require('extend.js');
 var form = require('./lib/form');
+var only = require('./lib/only');
 var isArray = Array.isArray;
 var Rube = require('rube');
-
-try {
-  var Emitter = require('events').EventEmitter;
-} catch (e) {
-  var Emitter = require('emitter');
-}
 
 /**
  * Export `Ive`
@@ -38,21 +33,22 @@ function Ive(props) {
    * @return {Ive} self
    */
 
-  function ive(obj, fn) {
-    if ('string' == typeof obj) return filter(obj, ive.attrs);
+  function ive(filter, obj, fn) {
+    if ('object' == typeof filter) fn = obj, obj = filter, filter = false;
+    var attrs = filter ? only(ive.attrs, filter) : ive.attrs;
 
     // Browser element
     if (obj.nodeName) {
-      form(obj, ive);
+      form(obj, fn, attrs);
     } else if (isArray(obj) || isNodeList(obj)) {
-      for (var i = 0, el; el = obj[i]; i++) form(el, ive);
+      for (var i = 0, el; el = obj[i]; i++) form(el, fn, attrs);
     } else if (fn) {
       // validate
-      validate(obj, ive.attrs, fn);
+      validate(obj, attrs, fn);
     } else {
       // thunkify
       return function (done) {
-        validate(obj, ive.attrs, done);
+        validate(obj, attrs, done);
       }
     }
 
@@ -68,9 +64,6 @@ function Ive(props) {
 
   // add the attributes
   ive.attr(props);
-
-  // attach an event emitter
-  Emitter(ive);
 
   return ive;
 }
@@ -126,20 +119,3 @@ function isNodeList(el) {
     ? true
     : false;
 }
-
-/**
- * Filter `obj` by `keys`
- *
- * @param {Object} obj
- * @return {Object}
- */
-
-function only(obj, keys){
-  obj = obj || {};
-  if ('string' == typeof keys) keys = keys.split(/ +/);
-  return keys.reduce(function(ret, key){
-    if (null == obj[key]) return ret;
-    ret[key] = obj[key];
-    return ret;
-  }, {});
-};

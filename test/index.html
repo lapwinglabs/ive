@@ -23,21 +23,27 @@
         border-color: red;
       }
 
+      [invalid] input {
+        border-color: red;
+      }
 
     </style>
   </head>
   <body>
 
     <form action="/create" method='post' class="form">
-      <input type="text" name="name" placeholder="name">
+      <label validate>
+        <span>Name:</span>
+        <input type="text" name="name" placeholder="name">
+      </label>
       <br>
-      <input type="text" name="phone" placeholder="phone">
+      <input type="text" name="phone" placeholder="phone" validate>
       <br>
-      <input type="text" name="email" placeholder="email">
+      <input type="text" name="email" placeholder="email" validate>
       <br>
-      <input type="text" name="age" placeholder="age">
+      <input type="text" name="age" placeholder="age" validate>
       <br>
-      <textarea name="bio" cols="30" rows="10" placeholder="bio"></textarea>
+      <textarea name="bio" cols="30" rows="10" placeholder="bio" disabled validate></textarea>
       <br>
       <input type="checkbox" name="sex" value='M'>Male
       <input type="checkbox" name="sex" value='F'>Female
@@ -79,36 +85,11 @@
       .assert(/^[MF]$/)
       .required(true);
 
-    schema(document.querySelector('.form'));
-
-    schema.on('submitting', function(form, json) {
-      console.log('submitting', form, json);
+    schema(document.querySelector('.form'), function(err) {
+      if (err) console.error(err.message);
     });
 
-    schema.on('submit', function(form, err, json) {
-      console.log('submit', form, err, json);
-    });
 
-    schema.on('blur', function(form, err, v) {
-      console.log('blur', form, err, v);
-    })
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // verifying that this works client-side
-      schema({
-        name: form.querySelector('[name="name"]').value,
-        phone: form.querySelector('[name="phone"]').value,
-        email: form.querySelector('[name="email"]').value,
-        age: form.querySelector('[name="age"]').value,
-        bio: form.querySelector('[name="bio"]').value,
-        sex: form.querySelector('[name="sex"]').value
-      }, function(err, v) {
-        if (err) throw err;
-        console.log(v);
-      });
-    });
   </script>
   </body>
 </html>

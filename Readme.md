@@ -71,10 +71,12 @@ ive.attr('age')
 
 ```html
 <form action="/create" method='post' class="create-user">
-  <input type="text" name="name" placeholder="name">
-  <input type="text" name="phone" placeholder="phone">
-  <input type="text" name="email" placeholder="email">
-  <input type="text" name="age" placeholder="age">
+  <input type="text" name="name" placeholder="name" validate>
+  <input type="text" name="phone" placeholder="phone" validate>
+  <input type="text" name="email" placeholder="email" validate>
+  <label validate>
+    <input type="text" name="age" placeholder="age">
+  </label>
 </form>
 ```
 
@@ -83,12 +85,13 @@ ive.attr('age')
 ```js
 var schema = require('./user-schema');
 schema(document.querySelector('.create-user'));
-// that's it. everything else is handled through form and input attributes
+// there is no next step! form looks for `[validate]` and
+// then validates the `input[name]` against Ive's schema
 ```
 
 ### Server
 
-#### - Express
+#### Express
 
 **server.js**
 
@@ -106,7 +109,7 @@ app.post('/users', function(req, res, next) {
 });
 ```
 
-#### - Koa
+#### Koa
 
 **server.js**
 
@@ -130,7 +133,7 @@ app.use(_.post('/users', function *(next) {
 
 Initialize an `Ive` instance with an optional set of `attrs`.
 
-### `ive(obj|str, [fn])`
+### `ive([str], obj, [fn])`
 
 Validate `obj` against the schema, calling `fn` when the validation is complete. `fn` has the signature
 `function(error, val) { ... }`. `val` is the new object that may be cleansed, formatted, and cast.
@@ -182,12 +185,10 @@ var ive = Ive({
 });
 
 // only validate on name and email
-var some = ive('name email');
-
-some({
+ive('name email', {
   name: 'matt',
   email: 'matt@lapwinglabs.com'
-})(fn)
+}, fn);
 ```
 
 ### `ive.attr(name|ive|obj, [rube])`

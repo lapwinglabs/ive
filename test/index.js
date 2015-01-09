@@ -134,7 +134,7 @@ describe('Schema', function() {
       schema.attr('email').type(String).required(true);
       schema.attr('age').cast(Number).type(Number).required(true);
 
-      schema('name email')({ name: 'matt', email: 'lapwinglabs@gmail.com' }, function(err, v) {
+      schema('name email', { name: 'matt', email: 'lapwinglabs@gmail.com' }, function(err, v) {
         assert(!err);
         assert('matt' == v.name);
         assert('lapwinglabs@gmail.com' == v.email);
@@ -168,7 +168,7 @@ describe('Schema', function() {
       name: 'matt',
       email: 'lapwinglabs@gmail.com',
       password: '0abcde'
-    })(function(err, v) {
+    }, function(err, v) {
       assert(!err);
       assert('matt' == v.name);
       assert('lapwinglabs@gmail.com' == v.email);

@@ -1,6 +1,6 @@
 {
   "name": "ive",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "isomorphic validation",
   "keywords": [
     "schema",
@@ -11,10 +11,8 @@
     "tj/batch": "^0.5.1",
     "lapwinglabs/rube": "0.0.x",
     "matthewmueller/extend.js": "0.0.x",
-    "component/assert": "0.x",
     "dominicbarnes/form": "0.2.x",
     "component/event": "0.1.x",
-    "ianstormtaylor/trigger-event": "0.x",
-    "component/emitter": "1.1.x"
+    "component/value": "1.1.0"
   }
 }
